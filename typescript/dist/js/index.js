@@ -20,8 +20,64 @@ console.log(myNumbers);
 console.log(myNumbers.length);
 myNumbers.push(3);
 console.log(myNumbers);
-// Tuplas
+// Tuplas -> Tuple
 let myTuple;
 myTuple = [5, 'Inacio', ['IMR', "Martinho"]];
 console.log(myTuple);
-// Object literals
+// Object literals -> {prop: value} 
+const user = {
+    name: "Inacio",
+    age: 20
+};
+console.log(user);
+console.log(user.name);
+user.name = "IMR";
+console.log(user.name);
+// any (aceita qualquer tipo de dado)
+let a = 0;
+console.log(a);
+a = "String Test";
+a = true;
+console.log(a);
+a = [];
+console.log(a);
+// union type
+let id = "123";
+console.log(id);
+id = 200;
+console.log(id);
+const userId = 10;
+const productId = "10926";
+const shirId = 124;
+console.log(userId);
+console.log(productId);
+console.log(shirId);
+// enum (enumera uma coleção)
+var Size;
+(function (Size) {
+    Size["S"] = "Small";
+    Size["M"] = "Medium";
+    Size["L"] = "Large";
+    Size["XL"] = "XLarge";
+    Size["XXL"] = "XXLarge";
+    Size["XXXL"] = "XXXLarge";
+})(Size || (Size = {}));
+;
+const tshirt = {
+    name: "Balanciaga",
+    size: Size.M,
+    color: "Gray",
+};
+console.log(tshirt);
+// literal type (determina um valor como um tipo)
+let teste;
+teste = "autenticado";
+teste = null;
+// finctions
+function sum(a, b) {
+    return a + b;
+}
+console.log(sum(6, 4));
+function sayHello(name) {
+    return;
+}
