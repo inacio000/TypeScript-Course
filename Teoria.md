@@ -20,7 +20,7 @@
 * E vamos adicionar de forma global com o flag -g;
 * A partir da instalação temos como executar/compilar o TS  em qualquer local da nossa máquina, com o comando tsc;
 #
-### Arquivo de confuração TS
+### Arquivo de configuração TS
 * É criado com o seguinte comando: 
 >    tsc --init
 #
