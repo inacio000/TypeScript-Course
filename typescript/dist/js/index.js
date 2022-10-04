@@ -1,5 +1,11 @@
 "use strict";
 // string, boolean, number
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 let x = 30;
 x = 5;
 console.log(x);
@@ -120,3 +126,83 @@ function doSomething(info) {
 }
 doSomething(6);
 doSomething(true);
+// generics
+function showArraysIntems(arr) {
+    arr.forEach((item) => {
+        console.log(`Items: ${item}`);
+    });
+}
+const firstArray = [1, 2, 3, 4, 5];
+const secondArray = ['Inacio', 'Martinho', 'Raimundo'];
+showArraysIntems(firstArray);
+showArraysIntems(secondArray);
+// Classes
+class User {
+    name;
+    role;
+    isApproved;
+    constructor(name, role, isApproved) {
+        this.name = name;
+        this.role = role;
+        this.isApproved = isApproved;
+    }
+    // Methods
+    showUserName() {
+        console.log(`The user name is ${this.name}`);
+    }
+    showUserRole(canShow) {
+        if (canShow) {
+            console.log(`The user role is ${this.role}`);
+            return;
+        }
+        console.log(`Restricted information!`);
+    }
+}
+const Inacio = new User('Inacio', 'Admin', true);
+console.log(Inacio);
+Inacio.showUserName();
+Inacio.showUserRole(true);
+class Car {
+    brand;
+    wheels; // rodas
+    constructor(brand, wheels) {
+        this.brand = brand;
+        this.wheels = wheels;
+    }
+    showBrand() {
+        console.log(`The car brand is ${this.brand} and has ${this.wheels} wheels`);
+    }
+}
+const Fusca = new Car('VW', 4);
+Fusca.showBrand();
+// heranca
+class SuperCar extends Car {
+    engine;
+    constructor(brand, wheels, engine) {
+        super(brand, wheels);
+        this.engine = engine;
+    }
+}
+const a4 = new SuperCar('Audi', 4, 2.0);
+console.log(a4);
+a4.showBrand();
+// constructor decorators
+function BaseParameters() {
+    return function (constructor) {
+        return class extends constructor {
+            id = Math.random();
+            createdAt = new Date();
+        };
+    };
+}
+let Person = class Person {
+    name;
+    constructor(name) {
+        this.name = name;
+    }
+};
+Person = __decorate([
+    BaseParameters()
+], Person);
+const imr = new Person('IMR');
+console.log(imr);

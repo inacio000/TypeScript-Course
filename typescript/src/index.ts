@@ -175,3 +175,113 @@ function doSomething(info: number | boolean) {
 
 doSomething(6);
 doSomething(true);
+
+
+// generics
+function showArraysIntems<T>(arr: T[]) {
+    arr.forEach((item) => {
+        console.log(`Items: ${item}`)
+    })
+}
+
+const firstArray = [1, 2, 3, 4, 5];
+const secondArray = ['Inacio', 'Martinho', 'Raimundo']
+
+showArraysIntems(firstArray);
+showArraysIntems(secondArray);
+
+
+// Classes
+class User {
+    name
+    role
+    isApproved
+
+    constructor(name: string, role: string, isApproved: boolean){
+        this.name = name;
+        this.role = role;
+        this.isApproved = isApproved;
+    }
+    // Methods
+    showUserName() {
+        console.log(`The user name is ${this.name}`);
+    }
+    showUserRole(canShow: boolean) {
+        if(canShow) {
+            console.log(`The user role is ${this.role}`);
+            return;
+        }
+        console.log(`Restricted information!`);
+    }
+}
+
+const Inacio = new User('Inacio', 'Admin', true);
+console.log(Inacio);
+
+Inacio.showUserName();
+Inacio.showUserRole(true);
+
+// Interfaces em classes
+interface IVehicle {
+    brand: string; // marca
+    showBrand(): void;
+}
+
+class Car implements IVehicle {
+
+    brand
+    wheels // rodas
+    
+    constructor(brand: string, wheels: number) {
+        this.brand = brand;
+        this.wheels = wheels;
+    }
+
+    showBrand(): void {
+        console.log(`The car brand is ${this.brand} and has ${this.wheels} wheels`);
+    }
+}
+
+const Fusca = new Car('VW', 4);
+Fusca.showBrand();
+
+
+// heranca
+class SuperCar extends Car {
+    engine
+
+    constructor(brand: string, wheels: number, engine: number) {
+        super(brand, wheels);
+        this.engine = engine;
+    }
+}
+
+const a4 = new SuperCar('Audi', 4, 2.0);
+console.log(a4);
+
+a4.showBrand();
+
+
+
+// constructor decorators
+function BaseParameters() {
+    return function<T extends { new (...args: any[]): {}}> (constructor: T) {
+        return class extends constructor {
+            id = Math.random();
+            createdAt = new Date();
+        };
+    };
+}
+
+@BaseParameters()
+
+class Person {
+    name
+
+    constructor(name: string) {
+            this.name = name;
+    }
+}
+
+const imr = new Person('IMR');
+console.log(imr);
