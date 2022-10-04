@@ -28,3 +28,5 @@
 > tsc -w
 * Qualquer alteração feita no ficheiro .ts será refletido no .js 
 #
+# Interfaces
+* Em TS, interfaces padronizam estruturas para ser reutilizado como tipo

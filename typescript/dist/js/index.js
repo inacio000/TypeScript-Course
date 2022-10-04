@@ -79,5 +79,44 @@ function sum(a, b) {
 }
 console.log(sum(6, 4));
 function sayHello(name) {
-    return;
+    return `Hello, ${name}`;
 }
+console.log(sayHello('Inacio'));
+function logger(msg) {
+    // função sem retorno (void)
+    console.log(msg);
+}
+logger('Teste');
+function greeting(name, greet) {
+    if (greet) {
+        console.log(`Hello ${greet} ${name}`);
+    }
+    else {
+        console.log(`Hello ${name}`);
+    }
+}
+greeting('Inacio');
+greeting('Raimundo', 'Sr.');
+function sumNumbers(nums) {
+    return nums.n1 + nums.n2 + nums.n3;
+}
+console.log(sumNumbers({ n1: 4, n2: 6, n3: 7 }));
+function multiplyNumber(nums) {
+    return nums.n1 * nums.n2 * nums.n3 * nums.n1;
+}
+const someNumbers = {
+    n1: 4,
+    n2: 6,
+    n3: 8,
+};
+console.log(multiplyNumber(someNumbers));
+// narrowing (checagem de tipo)
+function doSomething(info) {
+    if (typeof info === 'number') {
+        console.log(`The number is: ${info}`);
+        return;
+    }
+    console.log('There was not typed any number');
+}
+doSomething(6);
+doSomething(true);
